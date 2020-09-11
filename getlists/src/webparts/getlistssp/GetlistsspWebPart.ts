@@ -1,4 +1,4 @@
-import { Version } from '@microsoft/sp-core-library';
+import { Version,Environment,EnvironmentType } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
@@ -8,12 +8,69 @@ import { escape } from '@microsoft/sp-lodash-subset';
 
 import styles from './GetlistsspWebPart.module.scss';
 import * as strings from 'GetlistsspWebPartStrings';
-
+import { SPHttpClient, SPHttpClientResponse } from '@microsoft/sp-http';
 export interface IGetlistsspWebPartProps {
   description: string;
 }
 
+export interface ISharepointLists {
+  value: ISharepointList[];
+}
+
+export interface ISharepointList {
+  Title: string;
+  Id: string;
+}
+
+
 export default class GetlistsspWebPart extends BaseClientSideWebPart<IGetlistsspWebPartProps> {
+
+  private _getListOfLists(): Promise<ISharepointLists> {
+    return this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists?$filter=Hidden eq false`,
+      SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
+        return response.json();
+      });
+  }
+
+  private _getAndRenderLists():void {
+if(Environment.type==EnvironmentType.Local)
+{
+
+}
+else if(Environment.type==EnvironmentType.ClassicSharePoint ||
+        Environment.type==EnvironmentType.SharePoint)
+        {
+          this._getListOfLists().then(
+            (response)=>{
+              this.renderListOfLists(response.value);
+            });
+
+        }
+
+  }
+
+  private renderListOfLists(items: ISharepointList[]): void {
+    let html: string = '';
+
+
+      items.forEach((item: ISharepointList) => {
+
+        html += `
+          <ul class="${styles.list}">
+          <li class="${styles.listItem}">
+          <span class="ms-font-l">${item.Id}"</span>
+          </li>
+          <li class="${styles.listItem}">
+          <span class="ms-font-l">${item.Title}"</span>
+          </li>
+          </ul>`;
+      });
+
+
+    const listContainer: Element = this.domElement.querySelector('#spListContainer');
+    listContainer.innerHTML = html;
+  }
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -30,7 +87,11 @@ export default class GetlistsspWebPart extends BaseClientSideWebPart<IGetlistssp
             </div>
           </div>
         </div>
+        <div id="spListContainer">
+        </div>
       </div>`;
+     this._getAndRenderLists();
+
   }
 
   protected get dataVersion(): Version {
