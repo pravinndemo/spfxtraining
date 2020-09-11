@@ -1,4 +1,4 @@
-# getlists
+# spfxbasics
 
 ## Summary
 
