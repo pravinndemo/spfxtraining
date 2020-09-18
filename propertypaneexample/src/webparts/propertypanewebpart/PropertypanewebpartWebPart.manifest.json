@@ -21,7 +21,16 @@
     "description": { "default": "propertypanewebpart description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "propertypanewebpart"
+      "description": "propertypanewebpart",
+      "productname":"Enter Product Name",
+      "productdescription":"Enter Product Desc",
+      "productcost":100,
+      "quantity":20,
+      "billamount":0,
+      "discount":0,
+      "netbillamount":0,
+      "IsCertified":false
+
     }
   }]
 }

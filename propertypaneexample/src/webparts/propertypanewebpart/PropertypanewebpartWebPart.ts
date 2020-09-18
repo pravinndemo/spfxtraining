@@ -1,7 +1,10 @@
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle,
+  PropertyPaneSlider,
+  PropertyPaneChoiceGroup
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
@@ -12,6 +15,7 @@ import * as strings from 'PropertypanewebpartWebPartStrings';
 export interface IPropertypanewebpartWebPartProps {
   description: string;
 
+  //for text box propertypane
   productname:string;
   productdescription:string;
   productcost:number;
@@ -19,6 +23,18 @@ export interface IPropertypanewebpartWebPartProps {
   billamount:number;
   discount:number;
   netbillamount:number;
+
+  //for toggle
+  currentTime:Date;
+  IsCertified:boolean;
+
+  //slider
+  Rating:number;
+
+  //choice group
+  processortype:string;
+
+  InvoiceFileType:string;
 
 }
 
@@ -59,6 +75,22 @@ export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IP
              <td>Net Bill Amount</td>
              <td>${this.properties.netbillamount=this.properties.billamount * this.properties.discount}</td>
              </tr>
+             <tr>
+             <td>Is Certified? </td>
+             <td>${this.properties.IsCertified}</td>
+             </tr>
+             <tr>
+             <td>Rating </td>
+             <td>${this.properties.Rating}</td>
+             </tr>
+             <tr>
+             <td>Processor Type </td>
+             <td>${this.properties.processortype}</td>
+             </tr>
+             <tr>
+             <td>Invoice File Type </td>
+             <td>${this.properties.InvoiceFileType}</td>
+             </tr>
              </table>
             </div>
           </div>
@@ -68,6 +100,10 @@ export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IP
 
   protected get dataVersion(): Version {
     return Version.parse('1.0');
+  }
+
+  protected get disableReactivePropertyChanges():boolean{
+    return true;
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -111,6 +147,54 @@ export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IP
                   resizable:false,
                   deferredValidationTime:5000,
                   placeholder:"Please enter the Product Quantity","description":"Name Property field"
+                }),
+                PropertyPaneToggle('IsCertified', {
+                  key: "IsCertified",
+                  label:"Is it Certified?",
+                  onText:"Isi Certified!..",
+                  offText:"Not an Isi certified product"
+
+                }),
+                PropertyPaneSlider('Rating', {
+                  label: "Selct your Rating",
+                  min:1,
+                  max:10,
+                  step:1,
+                  showValue:true,
+                  value:1
+                }),
+                PropertyPaneChoiceGroup('processortype', {
+                  label: "Choices",
+                  options:[
+                    { key:'15',text:'Intel 15'},
+                    { key:'17',text:'Intel 17',checked:true},
+                    { key:'19',text:'Intel 19'}
+                  ]
+                }),
+                PropertyPaneChoiceGroup('InvoiceFileType', {
+                  label: "Select Invoice File Type",
+                  options:[
+                    { key:'MSWord',text:'MSWord',
+                  imageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/docx_32x1.png',
+                  imageSize:{width:32,height:32},
+                  selectedImageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/docx_32x1.png'
+                  },
+                  { key:'MSExcel',text:'MSExcel',
+                  imageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/xlsx_32x1.png',
+                  imageSize:{width:32,height:32},
+                  selectedImageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/xlsx_32x1.png'
+                  },
+                  { key:'MSPowerPoint',text:'MSPowerPoint',
+                  imageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/pptx_32x1.png',
+                  imageSize:{width:32,height:32},
+                  selectedImageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/pptx_32x1.png'
+                  },
+                  { key:'OneNote',text:'OneNote',
+                  imageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/one_32x1.png',
+                  imageSize:{width:32,height:32},
+                  selectedImageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/one_32x1.png'
+                  }
+                  ]
                 })
               ]
             }
