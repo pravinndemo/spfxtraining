@@ -4,7 +4,9 @@ import {
   PropertyPaneTextField,
   PropertyPaneToggle,
   PropertyPaneSlider,
-  PropertyPaneChoiceGroup
+  PropertyPaneChoiceGroup,
+  PropertyPaneDropdown,
+  PropertyPaneCheckbox, PropertyPaneLink
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
@@ -35,7 +37,11 @@ export interface IPropertypanewebpartWebPartProps {
   processortype:string;
 
   InvoiceFileType:string;
+//dropdown
+  newProcessorType:string;
 
+//checkbox
+discountCoupon:boolean;
 }
 
 export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IPropertypanewebpartWebPartProps> {
@@ -90,6 +96,13 @@ export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IP
              <tr>
              <td>Invoice File Type </td>
              <td>${this.properties.InvoiceFileType}</td>
+             </tr>
+             <tr>
+             <td>New Processor Type </td>
+             <td>${this.properties.newProcessorType}</td>
+             </tr>
+             <td>Do you have a Discount Coupon?</td>
+             <td>${this.properties.discountCoupon}</td>
              </tr>
              </table>
             </div>
@@ -195,6 +208,31 @@ export default class PropertypanewebpartWebPart extends BaseClientSideWebPart<IP
                   selectedImageSrc:'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/one_32x1.png'
                   }
                   ]
+                }),
+                PropertyPaneDropdown('newProcessorType', {
+                  label: "New Processor Type",
+                  options:[
+                    { key:'15',text:'Intel 15'},
+                    { key:'17',text:'Intel 17'},
+                    { key:'19',text:'Intel 19'}
+                  ],
+                  selectedKey:'17'
+                }),
+                PropertyPaneCheckbox('discountCoupon', {
+                  text: 'Do you have a discount coupon?',
+                  checked:false,
+                  disabled:false
+                }),
+                PropertyPaneLink('', {
+                  href: 'https://www.amazon.in',
+                  text:'Buy intel processor from seller',
+                  target:'_blank',
+                  popupWindowProps:{
+                    height:500,
+                    width:500,
+                    positionWindowPosition:2,
+                    title:'Amazon'
+                  }
                 })
               ]
             }
