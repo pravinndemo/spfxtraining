@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "ext-lib-wp-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/extLibWp/ExtLibWpWebPart.js",
+          "manifest": "./src/webparts/extLibWp/ExtLibWpWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "jquery":"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
+    "jqueryui":"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+  },
+  "localizedResources": {
+    "ExtLibWpWebPartStrings": "lib/webparts/extLibWp/loc/{locale}.js"
+  }
+}
