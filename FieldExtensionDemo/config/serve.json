@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/SpfxTraining/Lists/ProjectsStatus/AllItems.aspx",
+      "fieldCustomizers": {
+        "Status": {
+          "id": "99e8cf17-fc22-4183-be10-1f8e7e8bd32b",
+          "properties": {
+            "sampleText": "Completed"
+          }
+        }
+      }
+    },
+    "fieldExtensionWp": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/SpfxTraining/Lists/ProjectsStatus/AllItems.aspx",
+      "fieldCustomizers": {
+        "Status": {
+          "id": "99e8cf17-fc22-4183-be10-1f8e7e8bd32b",
+          "properties": {
+            "sampleText": "Completed"
+          }
+        }
+      }
+    }
+  }
+}

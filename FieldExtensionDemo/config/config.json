@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "field-extension-wp-field-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/fieldExtensionWp/FieldExtensionWpFieldCustomizer.js",
+          "manifest": "./src/extensions/fieldExtensionWp/FieldExtensionWpFieldCustomizer.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FieldExtensionWpFieldCustomizerStrings": "lib/extensions/fieldExtensionWp/loc/{locale}.js"
+  }
+}
