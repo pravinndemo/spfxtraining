@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/SpfxTraining/SitePages/test.aspx",
+      "customActions": {
+        "599bd650-04e6-421d-85fc-3f696a0cd9cf": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+          "Top":"HeaderPage",
+          "Bottom":"Footerpage"
+          }
+        }
+      }
+    },
+    "appCustomizerDemo": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/SpfxTraining/SitePages/test.aspx",
+      "customActions": {
+        "599bd650-04e6-421d-85fc-3f696a0cd9cf": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "Top":"HeaderPage",
+            "Bottom":"Footerpage"
+            }
+        }
+      }
+    }
+  }
+}
