@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "cutsom-library-library": {
+      "components": [
+        {
+          "entrypoint": "./lib/libraries/cutsomLibrary/CutsomLibraryLibrary.js",
+          "manifest": "./src/libraries/cutsomLibrary/CutsomLibraryLibrary.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CutsomLibraryLibraryStrings": "lib/libraries/cutsomLibrary/loc/{locale}.js"
+  }
+}

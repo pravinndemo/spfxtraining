@@ -1,0 +1,9 @@
+{
+  "id": "67688800-dfc7-485f-b1cc-706ab7f83284",
+  "alias": "CutsomLibraryLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
