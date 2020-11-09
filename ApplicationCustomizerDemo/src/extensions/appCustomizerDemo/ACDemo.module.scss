@@ -1,20 +1,36 @@
-.appcustomapp{
-  .topPlaceholder{
-height: 60px;
-text-align: center;
-line-height: 2.5;
-font-weight: bold;
-display: flex;
-align-items: center;
-justify-content: center;
-  }
-  .bottomPlaceholder{
-    height: 40px;
-    text-align: center;
-    line-height: 2.5;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+$primarycolor : "[theme: themePrimary, default: #012a6d]";
+$primarybuttonText:"[theme:primaryButtonText, default:#ffffff]";
+.appcustomapp
+{
+   background-color: $primarycolor;
+   color:$primarybuttonText;
 }
+.topPlaceholder{
+    height: 60px;
+}
+.bottomPlaceholder{
+    height: 60px;
+}
+
+
+// .appcustomapp{
+//   .topPlaceholder{
+// height: 60px;
+// text-align: center;
+// line-height: 2.5;
+// font-weight: bold;
+// display: flex;
+// align-items: center;
+// justify-content: center;
+//   }
+//   .bottomPlaceholder{
+//     height: 40px;
+//     text-align: center;
+//     line-height: 2.5;
+//     font-weight: bold;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+// }
