@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/testappcust01/SitePages/Home.aspx",
+      "customActions": {
+        "e38fb0e4-014c-44c8-9a60-9500f0af7caa": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    },
+    "helloWorld": {
+      "pageUrl": "https://connectdevtenant.sharepoint.com/sites/testappcust01/SitePages/Home.aspx",
+      "customActions": {
+        "e38fb0e4-014c-44c8-9a60-9500f0af7caa": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}
