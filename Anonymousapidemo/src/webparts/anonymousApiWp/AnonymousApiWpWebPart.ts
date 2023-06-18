@@ -13,8 +13,8 @@ import { IAnonymousApiWpProps } from './components/IAnonymousApiWpProps';
 import {HttpClient,HttpClientResponse} from '@microsoft/sp-http';
 
 export interface IAnonymousApiWpWebPartProps {
-  description: string; 
-  
+  description: string;
+
 }
 
 export default class AnonymousApiWpWebPart extends BaseClientSideWebPart<IAnonymousApiWpWebPartProps> {
@@ -47,7 +47,7 @@ export default class AnonymousApiWpWebPart extends BaseClientSideWebPart<IAnonym
   private getUserDetails():Promise<any>{
 
     return this.context.httpClient.get(
-      'https://Jsonplaceholder.typicode.com/users/1',HttpClient.configurations.v1
+      'https://Jsonplaceholder.typicode.com/users/2',HttpClient.configurations.v1
     )
     .then((response:HttpClientResponse)=>{
 return response.json();

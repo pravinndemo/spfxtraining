@@ -29,14 +29,14 @@ export default class HttpclientWebPart extends BaseClientSideWebPart<IHttpclient
       New contact list Name: <br/>
       <input type='text' id='txtNewLibName'/><br/><br/>
       New contact list Description: <br/>
-       <input type='text' id='txtNewLibDescription'/><br/><br/>
-      <input type="button" id="btnCreateNewLib" value="Create New Lib"/><br/>
+       <input type='text' id='txtNewListdes'/><br/><br/>
+      <input type="button" id="btnCreateNewcontactlist" value="Create New eventslist"/><br/>
       </div>`;
       this.bindEvents();
   }
  private bindEvents():void {
     this.domElement.querySelector('#btnCreateNewList').addEventListener('click',()=>{this.CreateNewList();});
-    this.domElement.querySelector('#btnCreateNewLib').addEventListener('click',()=>{this.CreateNewLib();});
+    this.domElement.querySelector('#btnCreateNewcontactlist').addEventListener('click',()=>{this.CreateNewLists1();});
 
   }
   private CreateNewList():void {
@@ -75,7 +75,7 @@ export default class HttpclientWebPart extends BaseClientSideWebPart<IHttpclient
     });
   }
 
-  private CreateNewLib():void {
+  private CreateNewLists1():void {
     var newListName=document.getElementById("txtNewLibName")["value"];
     var newListDescription=document.getElementById("txtNewLibDescription")["value"];
     const listUrl: string = this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('"+newListName+"')";
@@ -91,7 +91,7 @@ export default class HttpclientWebPart extends BaseClientSideWebPart<IHttpclient
     "Title": newListName,
     "Description": newListDescription,
     "AllowContentTypes": true,
-    "BaseTemplate": 105, //change the base template 105 for document library
+    "BaseTemplate": 105, //
     "ContentTypesEnabled": true,
     };
     const spHttpClientOptions: ISPHttpClientOptions = {

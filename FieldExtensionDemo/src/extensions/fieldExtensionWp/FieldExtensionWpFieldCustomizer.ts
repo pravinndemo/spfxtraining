@@ -37,13 +37,13 @@ export default class FieldExtensionWpFieldCustomizer
   public onRenderCell(event: IFieldCustomizerCellEventParameters): void {
     // Use this method to perform your custom cell rendering.
    // const text: string = `${this.properties.sampleText}: ${event.fieldValue}`;
-    const text: string = `${event.fieldValue}`;
+  const text: string = `${event.fieldValue}`;
 
     //event.domElement.innerText = text;
 
     //event.domElement.classList.add(styles.cell);
 
-    event.domElement.innerHTML=`<div class='${styles.FieldExtensionWp}'>
+   event.domElement.innerHTML=`<div class='${styles.FieldExtensionWp}'>
     <div class='${styles.cell}'><div style='background:red;width:${event.fieldValue}px;color:blue;'>
     ${event.fieldValue}%</div></div></div>`;
   }

@@ -61,7 +61,7 @@ export default class SpfxbasicsdemoWebPart extends BaseClientSideWebPart<ISpfxba
   protected get dataVersion(): Version {
     return Version.parse('1.0');
   }
-
+   
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
